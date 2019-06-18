@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DyServerUI</title>
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body :controller="app" class="ms-controller">
+<header>
+    <div class="app-name">
+        <i class="iconfont iconecsyunfuwuqiECS"></i>
+        <span>DY-SERVER-UI</span>
+    </div>
+    <div class="app-ctrl">
+        <i class="iconfont iconzuixiaohua" :click="minimize"></i>
+        <i class="iconfont iconClose" :click="close"></i>
+    </div>
+</header>
+<article>
+    <div class="form-group directory">
+        <div>目录</div>
+        <a class="input" :attr="{title:@directory || 点击选择服务器根目录}">
+            <span class="tip" :visible="!@directory">点击选择服务器根目录</span>
+            <span class="path" :visible="@directory">{{directory}}</span>
+            <input id="directory" type="file" webkitdirectory directory/>
+        </a>
+    </div>
+    <div class="form-group port">
+        <div>端口</div>
+        <input class="input" :duplex="@port" type="text" placeholder="端口号，默认8080，占用自增"/>
+    </div>
+    <div class="server-ctrl">
+        <i class="iconfont iconqidong" title="run" :click="serverRun"
+           :class="[(!@directory || @isRun) && 'disabled']"></i>
+        <i class="iconfont iconai08" title="stop" :click="serverStop"
+           :class="[(!@directory || !@isRun) && 'disabled']"></i>
+    </div>
+</article>
+<footer>该服务器基于dy-server， version {{version}}</footer>
+<div class="loading" :visible="loading">正在{{@isRun ? '关闭':'开启'}}请稍等...</div>
+<script src="../avalon.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

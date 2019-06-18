@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.ms-controller {
+    visibility: hidden;
+}
+
+body {
+    overflow: hidden;
+    position: relative;
+}
+
+.loading {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mainColor: #0037ad;
+
+header {
+    background-color: @mainColor;
+    color: #fff;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    -webkit-app-region: drag;
+
+    .app-name {
+        display: flex;
+        align-items: center;
+        font-size: 22px;
+
+        .iconfont {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+    }
+
+    .app-ctrl {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+
+        .iconfont {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            -webkit-app-region: no-drag;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #3364ce;
+            }
+
+
+            &.iconClose {
+                &:hover {
+                    background-color: #d45a5a;
+                }
+            }
+        }
+    }
+}
+
+article {
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .form-group {
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .input {
+            margin-left: 15px;
+            width: 220px;
+            height: 30px;
+            border: 1px solid #aaa;
+            outline: none;
+            padding: 0 10px;
+        }
+    }
+
+    .directory {
+
+        .input {
+            background-color: #efefef;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+
+            span {
+                font-size: 12px;
+                white-space:nowrap;
+            }
+
+            .tip {
+                color: #757575;
+            }
+
+            input {
+                display: block;
+                height: 100%;
+                position: absolute;
+                top:0;
+                left: 0;
+                opacity: 0;
+            }
+        }
+    }
+
+    .server-ctrl {
+        margin-top: 30px;
+        display: flex;
+
+        .iconfont {
+            font-size: 40px;
+            cursor: pointer;
+
+            & + .iconfont {
+                margin-left: 50px;
+            }
+
+            &.iconqidong {
+                color: #16cf0c;
+            }
+
+            &.iconai08 {
+                color: #cc0000;
+            }
+
+            &.disabled {
+                color: #777;
+            }
+        }
+    }
+}
+
+footer {
+    background-color: #e5e5e5;
+    height: 20px;
+    line-height: 20px;
+    text-align: right;
+    font-size: 12px;
+    color: #333;
+    padding-right: 10px;
+}
