@@ -1,16 +1,25 @@
 {
   "name": "dy-server-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "electron ."
   },
   "keywords": [],
-  "author": "",
+  "author": "rily",
   "license": "ISC",
   "devDependencies": {
     "dy-server2": "^0.1.2",
     "electron": "^5.0.4"
+  },
+  "files": [
+    "bin",
+    "page",
+    "index.js"
+  ],
+  "bin": {
+    "dy-server-ui": "./bin/start",
+    "dsui": "./bin/start"
   }
 }
