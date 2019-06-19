@@ -7,30 +7,51 @@
     visibility: hidden;
 }
 
+@mainColor: #222;
+@headerHeight: 36px;
+@minimizeColor: #666;
+@closeColor: #d45a5a;
+
+@footerHeight: 30px;
+@footerColor: #333;
+@footerBgColor: #e5e5e5;
+
 body {
+    display: flex;
+    font-size: 12px;
+    flex-direction: column;
     overflow: hidden;
     position: relative;
+    width: 500px;
+    height: 300px;
 }
 
 .loading {
     position: absolute;
-    top: 50px;
+    top: @headerHeight;
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .8);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    font-size: 16px;
+    letter-spacing: 2px;
 
-@mainColor: #0037ad;
+    .iconfont {
+        margin-right: 10px;
+        font-size: 18px;
+        animation: loading 1s infinite linear;
+    }
+}
 
 header {
     background-color: @mainColor;
+    box-shadow: 0 0 15px #666;
     color: #fff;
-    height: 50px;
+    height: @headerHeight;
     display: flex;
     justify-content: space-between;
     padding-left: 15px;
@@ -39,11 +60,12 @@ header {
     .app-name {
         display: flex;
         align-items: center;
-        font-size: 22px;
+        font-size: 18px;
 
         .iconfont {
             margin-right: 10px;
-            font-size: 24px;
+            font-size: 20px;
+            font-weight: bold;
         }
     }
 
@@ -56,19 +78,19 @@ header {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 50px;
-            height: 50px;
+            width: @headerHeight;
+            height: @headerHeight;
             -webkit-app-region: no-drag;
 
             &:hover {
                 cursor: pointer;
-                background-color: #3364ce;
+                background-color: @minimizeColor;
             }
 
 
             &.iconClose {
                 &:hover {
-                    background-color: #d45a5a;
+                    background-color: @closeColor;
                 }
             }
         }
@@ -76,21 +98,21 @@ header {
 }
 
 article {
-    height: 230px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     .form-group {
-        height: 40px;
+        height: 48px;
         display: flex;
         flex-direction: row;
         align-items: center;
 
         .input {
             margin-left: 15px;
-            width: 220px;
+            width: 320px;
             height: 30px;
             border: 1px solid #aaa;
             outline: none;
@@ -109,7 +131,7 @@ article {
 
             span {
                 font-size: 12px;
-                white-space:nowrap;
+                white-space: nowrap;
             }
 
             .tip {
@@ -120,7 +142,7 @@ article {
                 display: block;
                 height: 100%;
                 position: absolute;
-                top:0;
+                top: 0;
                 left: 0;
                 opacity: 0;
             }
@@ -128,16 +150,22 @@ article {
     }
 
     .server-ctrl {
-        margin-top: 30px;
+        margin-top: 15px;
         display: flex;
 
-        .iconfont {
-            font-size: 40px;
-            cursor: pointer;
+        & > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-            & + .iconfont {
+            & + div {
                 margin-left: 50px;
             }
+        }
+
+        .iconfont {
+            font-size: 30px;
+            cursor: pointer;
 
             &.iconqidong {
                 color: #16cf0c;
@@ -149,17 +177,43 @@ article {
 
             &.disabled {
                 color: #777;
+                cursor: not-allowed;
+            }
+
+            &.iconliulanqi-IE {
+                color: #0078d7;
             }
         }
     }
 }
 
 footer {
-    background-color: #e5e5e5;
-    height: 20px;
-    line-height: 20px;
+    background-color: @footerBgColor;
+    height: @footerHeight;
+    line-height: @footerHeight;
     text-align: right;
-    font-size: 12px;
-    color: #333;
+    color: @footerColor;
     padding-right: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 14px;
+
+    a {
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+    }
+
+    .iconfont {
+        font-size: 24px;
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

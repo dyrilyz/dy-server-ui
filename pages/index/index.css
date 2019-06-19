@@ -6,25 +6,38 @@
   visibility: hidden;
 }
 body {
+  display: flex;
+  font-size: 12px;
+  flex-direction: column;
   overflow: hidden;
   position: relative;
+  width: 500px;
+  height: 300px;
 }
 .loading {
   position: absolute;
-  top: 50px;
+  top: 36px;
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.loading .iconfont {
+  margin-right: 10px;
+  font-size: 18px;
+  animation: loading 1s infinite linear;
 }
 header {
-  background-color: #0037ad;
+  background-color: #222;
+  box-shadow: 0 0 15px #666;
   color: #fff;
-  height: 50px;
+  height: 36px;
   display: flex;
   justify-content: space-between;
   padding-left: 15px;
@@ -33,11 +46,12 @@ header {
 header .app-name {
   display: flex;
   align-items: center;
-  font-size: 22px;
+  font-size: 18px;
 }
 header .app-name .iconfont {
   margin-right: 10px;
-  font-size: 24px;
+  font-size: 20px;
+  font-weight: bold;
 }
 header .app-ctrl {
   display: flex;
@@ -48,33 +62,33 @@ header .app-ctrl .iconfont {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 36px;
+  height: 36px;
   -webkit-app-region: no-drag;
 }
 header .app-ctrl .iconfont:hover {
   cursor: pointer;
-  background-color: #3364ce;
+  background-color: #666;
 }
 header .app-ctrl .iconfont.iconClose:hover {
   background-color: #d45a5a;
 }
 article {
-  height: 230px;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 article .form-group {
-  height: 40px;
+  height: 48px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 article .form-group .input {
   margin-left: 15px;
-  width: 220px;
+  width: 320px;
   height: 30px;
   border: 1px solid #aaa;
   outline: none;
@@ -103,15 +117,20 @@ article .directory .input input {
   opacity: 0;
 }
 article .server-ctrl {
-  margin-top: 30px;
+  margin-top: 15px;
   display: flex;
 }
-article .server-ctrl .iconfont {
-  font-size: 40px;
-  cursor: pointer;
+article .server-ctrl > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-article .server-ctrl .iconfont + .iconfont {
+article .server-ctrl > div + div {
   margin-left: 50px;
+}
+article .server-ctrl .iconfont {
+  font-size: 30px;
+  cursor: pointer;
 }
 article .server-ctrl .iconfont.iconqidong {
   color: #16cf0c;
@@ -121,13 +140,35 @@ article .server-ctrl .iconfont.iconai08 {
 }
 article .server-ctrl .iconfont.disabled {
   color: #777;
+  cursor: not-allowed;
+}
+article .server-ctrl .iconfont.iconliulanqi-IE {
+  color: #0078d7;
 }
 footer {
   background-color: #e5e5e5;
-  height: 20px;
-  line-height: 20px;
+  height: 30px;
+  line-height: 30px;
   text-align: right;
-  font-size: 12px;
   color: #333;
   padding-right: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 14px;
+}
+footer a {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+}
+footer .iconfont {
+  font-size: 24px;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

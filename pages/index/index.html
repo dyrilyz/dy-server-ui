@@ -9,10 +9,12 @@
 <body :controller="app" class="ms-controller">
 <header>
     <div class="app-name">
-        <i class="iconfont iconecsyunfuwuqiECS"></i>
-        <span>DY-SERVER-UI</span>
+        <i class="iconfont iconfuwuqi"></i>
+        <span>dy-server-ui</span>
     </div>
     <div class="app-ctrl">
+        <i class="iconfont" :click="topToggle" :class="[@isTop ? 'iconguding-tianchong': 'iconguding']"
+           title="固定屏幕顶端"></i>
         <i class="iconfont iconzuixiaohua" :click="minimize"></i>
         <i class="iconfont iconClose" :click="close"></i>
     </div>
@@ -31,14 +33,26 @@
         <input class="input" :duplex="@port" type="text" placeholder="端口号，默认8080，占用自增"/>
     </div>
     <div class="server-ctrl">
-        <i class="iconfont iconqidong" title="run" :click="serverRun"
-           :class="[(!@directory || @isRun) && 'disabled']"></i>
-        <i class="iconfont iconai08" title="stop" :click="serverStop"
-           :class="[(!@directory || !@isRun) && 'disabled']"></i>
+        <div>
+            <i class="iconfont iconqidong" title="run" :click="serverRun"
+               :class="[(!@directory || @isRun) && 'disabled']"></i>
+            <span>运行</span>
+        </div>
+        <div>
+            <i class="iconfont iconai08" title="stop" :click="serverStop"
+               :class="[(!@directory || !@isRun) && 'disabled']"></i>
+            <span>停止</span>
+        </div>
+        <div>
+            <i class="iconfont iconliulanqi-IE" title="Browser" :click="openBrowser"></i>
+            <span>打开</span>
+        </div>
     </div>
 </article>
-<footer>该服务器基于dy-server， version {{version}}</footer>
-<div class="loading" :visible="loading">正在{{@isRun ? '关闭':'开启'}}请稍等...</div>
+<footer>
+    <a :click="about"><i class="iconfont iconguanyu"></i> 关于</a>
+</footer>
+<div class="loading" :visible="loading"><i class="iconfont iconLoading"></i>正在{{@isRun ? '关闭':'开启'}}请稍等...</div>
 <script src="../avalon.min.js"></script>
 <script src="index.js"></script>
 </body>

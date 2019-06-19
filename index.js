@@ -7,17 +7,19 @@ app.on('ready', () => {
         height: 300,
         frame: false,
         webPreferences: {
-            nodeIntegration: true,
+            nodeIntegration: true
         },
         resizable: false,
     })
 
 
-    mainWin.loadFile('page/index/index.html')
+    mainWin.loadFile('pages/index/index.html')
 
     mainWin.on('closed', () => {
         mainWin = null
     })
+
+    // mainWin.webContents.openDevTools()
 })
 
 
@@ -27,4 +29,8 @@ ipcMain.on('main-win-minimize', () => {
 
 ipcMain.on('main-win-close', () => {
     mainWin.close()
+})
+
+ipcMain.on('top-toggle', (e, flag) => {
+    mainWin.setAlwaysOnTop(flag)
 })
