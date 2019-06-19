@@ -1,16 +1,20 @@
 {
   "name": "dy-server-ui",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-packager . --overwrite"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "dy-server2": "^0.1.2"
+  },
   "devDependencies": {
-    "dy-server2": "^0.1.2",
-    "electron": "^5.0.4"
+    "electron": "^5.0.4",
+    "electron-packager": "^13.1.1"
   }
 }

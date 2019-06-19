@@ -10,10 +10,11 @@ app.on('ready', () => {
             nodeIntegration: true,
         },
         resizable: false,
+        alwaysOnTop: true,
     })
 
 
-    mainWin.loadFile('page/index/index.html')
+    mainWin.loadFile('pages/index/index.html')
 
     mainWin.on('closed', () => {
         mainWin = null
