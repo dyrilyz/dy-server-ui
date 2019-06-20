@@ -27,9 +27,9 @@ const vm = avalon.define({
     about () {
         let result = ''
         result += '版本信息：version ' + this.version + '\n\n'
-        result += 'dy-server-ui是基于静态资源服务器dy-server2的界面化工具\n\n'
+        result += 'dy-server-ui是基于静态资源服务器dy-server的界面化工具\n\n'
         result += 'github地址：https://github.com/RilyZhang/dy-server-ui\n\n'
-        result += 'dy-server2 github地址：https://github.com/RilyZhang/dy-server\n\n'
+        result += 'dy-server github地址：https://github.com/RilyZhang/dy-server\n\n'
         alert(result)
     },
     openBrowser () {
