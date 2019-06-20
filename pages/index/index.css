@@ -66,9 +66,20 @@ header .app-ctrl .iconfont {
   height: 36px;
   -webkit-app-region: no-drag;
 }
+header .app-ctrl .iconfont:before {
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+}
 header .app-ctrl .iconfont:hover {
   cursor: pointer;
   background-color: #666;
+}
+header .app-ctrl .iconfont:hover:before {
+  transform: rotate(180deg);
+}
+header .app-ctrl .iconfont.iconguding-tianchong:hover:before,
+header .app-ctrl .iconfont.iconguding:hover:before {
+  transform: rotate(0deg);
 }
 header .app-ctrl .iconfont.iconClose:hover {
   background-color: #d45a5a;

@@ -82,9 +82,26 @@ header {
             height: @headerHeight;
             -webkit-app-region: no-drag;
 
+            &:before {
+                transform: rotate(0deg);
+                transition: transform .3s;
+            }
+
             &:hover {
                 cursor: pointer;
                 background-color: @minimizeColor;
+
+                &:before {
+                    transform: rotate(180deg);
+                }
+            }
+
+            &.iconguding-tianchong,&.iconguding {
+                &:hover {
+                    &:before {
+                        transform: rotate(0deg);
+                    }
+                }
             }
 
 
