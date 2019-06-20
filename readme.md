@@ -27,6 +27,10 @@ cnpm i
 npm start
 ```
 
+示例图
+
+![](resource/demo.png)
+
 4.打包
 
 如果不想使用npm start来启动项目，可以直接将项目打包为桌面应用：
