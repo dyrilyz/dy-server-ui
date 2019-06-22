@@ -1,8 +1,25 @@
 const {app, BrowserWindow, ipcMain} = require('electron')
-let mainWin = null;
 
-app.on('ready', () => {
-    mainWin = new BrowserWindow({
+ipcMain.on('main-win-minimize', (e, id) => {
+    const win = BrowserWindow.fromId(id)
+    if (win) win.minimize()
+})
+
+ipcMain.on('main-win-close', (e, id) => {
+    const win = BrowserWindow.fromId(id)
+    if (win) win.close()
+})
+
+ipcMain.on('top-toggle', (e, flag, id) => {
+    const win = BrowserWindow.fromId(id)
+    if (win) win.setAlwaysOnTop(flag)
+})
+
+ipcMain.on('new-server', initWindow)
+
+// 创建窗口
+function createWindow () {
+    let win = new BrowserWindow({
         width: 500,
         height: 300,
         frame: false,
@@ -10,27 +27,25 @@ app.on('ready', () => {
             nodeIntegration: true
         },
         resizable: false,
+        show: false
     })
 
-
-    mainWin.loadFile('pages/index/index.html')
-
-    mainWin.on('closed', () => {
-        mainWin = null
+    win.on('closed', () => {
+        win = null
     })
 
-    // mainWin.webContents.openDevTools()
-})
+    win.webContents.on('did-finish-load', e => {
+        win.show()
+        win.webContents.send('window-created', win.id)
+    })
 
+    return win
+}
 
-ipcMain.on('main-win-minimize', () => {
-    mainWin.minimize()
-})
+// 打开窗口
+function initWindow () {
+    const win = createWindow()
+    win.loadFile('pages/index/index.html')
+}
 
-ipcMain.on('main-win-close', () => {
-    mainWin.close()
-})
-
-ipcMain.on('top-toggle', (e, flag) => {
-    mainWin.setAlwaysOnTop(flag)
-})
+app.on('ready', initWindow)

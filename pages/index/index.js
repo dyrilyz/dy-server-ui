@@ -1,7 +1,11 @@
+avalon.config({debug: false})
+
+const appBody = document.querySelector('.app-body')
 const {ipcRenderer} = require('electron')
 const DyServer = require('dy-server2')
 const {exec} = require('child_process')
 const package = require('../../package')
+let winId = 0;
 
 let server = null
 
@@ -16,13 +20,16 @@ const vm = avalon.define({
     addr: '',
     topToggle () {
         this.isTop = !this.isTop
-        ipcRenderer.send('top-toggle', this.isTop)
+        ipcRenderer.send('top-toggle', this.isTop, winId)
     },
     minimize () {
-        ipcRenderer.send('main-win-minimize')
+        ipcRenderer.send('main-win-minimize', winId)
     },
     close () {
-        ipcRenderer.send('main-win-close')
+        ipcRenderer.send('main-win-close', winId)
+    },
+    newServer () {
+        ipcRenderer.send('new-server', winId)
     },
     about () {
         let result = ''
@@ -64,7 +71,6 @@ const vm = avalon.define({
             this.isRun = !this.isRun
             this.loading = false
             this.addr = ''
-            this.port = ''
         })
     },
 });
@@ -76,3 +82,13 @@ dir.addEventListener('change', e => {
         vm.directory = e.target.files[0].path
     }
 })
+
+ipcRenderer.on('window-created', (e, id) => {
+    winId = id
+})
+
+document.onreadystatechange = () => {
+    if (document.readyState == "complete") {
+        ipcRenderer.send('page-ready')
+    }
+}

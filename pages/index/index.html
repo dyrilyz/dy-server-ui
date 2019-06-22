@@ -18,7 +18,7 @@
         <i class="iconfont iconClose" :click="close"></i>
     </div>
 </header>
-<article>
+<article class="app-body">
     <div class="form-group directory">
         <div>目录</div>
         <a class="input" :attr="{title:@directory || 点击选择服务器根目录}">
@@ -45,6 +45,10 @@
         <div>
             <i class="iconfont iconliulanqi-IE" title="Browser" :click="openBrowser"></i>
             <span>打开</span>
+        </div>
+        <div>
+            <i class="iconfont icondakai" title="new" :click="newServer"></i>
+            <span>新建窗口</span>
         </div>
     </div>
 </article>
